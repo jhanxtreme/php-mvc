@@ -1,4 +1,4 @@
 php-mvc
 =======
 
-This my PHP Beta Frame work. 
+This my PHP Beta FrameWork. 
