@@ -25,7 +25,7 @@ class RegisterPages{
 
 		//loop through the current directory in the controllers
 		while(false !== ($filename = readdir($dh))) {
-			if(! in_array($filename, array('..','.'))){
+			if(! in_array($filename, array('..','.','index.html'))){
 				$temp = str_replace('Controller.php','',$filename);
 				$files[] = strtolower($temp);
 			}
