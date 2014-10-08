@@ -34,7 +34,7 @@ $jx_base_path = $_SERVER['REQUEST_SCHEME'].':'.DS.DS.$_SERVER['SERVER_NAME'].$jx
 if(is_dir(ROOT.$jx_root_path)){
 	define('BASE_PATH', str_replace('\\','/', $jx_base_path) . '/');
 }else{
-	die('Incorrect path folder to run the application.'.SELF);
+	die('Incorrect path folder to run the application.');
 }
 
 
@@ -54,24 +54,22 @@ if(SERVER_ENV == 'development'){
 }
 
 
-
 /* CONFIGURE DATABASE LOGINS
  * Enable to confire database 
  *
 require_once(CONFIG_PATH.DS.'Database.config'.EXT);
 $db_config = DatabaseConfig::getInstance();
 $db_info = array(
-		'host' 		=> '127.0.0.1',
-		'username'	=> 'root',
+		'host' 		=> '',
+		'username'	=> '',
 		'password'	=> '',
-		'dbname'	=> 'jx_employees',
+		'dbname'	=> '',
 		'driver'	=> 'mysql',
 		'charset'	=> 'utf8'
 	);
 $db_config->setLogins($db_info);
 
 */
-
 
 
 //
