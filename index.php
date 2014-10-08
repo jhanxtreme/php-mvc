@@ -64,11 +64,10 @@ $db_info = array(
 		'username'	=> '',
 		'password'	=> '',
 		'dbname'	=> '',
-		'driver'	=> 'mysql',
+		'driver'	=> '',
 		'charset'	=> 'utf8'
 	);
 $db_config->setLogins($db_info);
-
 */
 
 

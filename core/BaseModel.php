@@ -7,16 +7,26 @@ class BaseModel{
 	function __construct(){
 
 		//set an database instance
-		$link = DatabaseConfig::getInstance();
+		$db_config = DatabaseConfig::getInstance();
 
-		// get database driver name	
-		$driverName = ucwords($link->getDriver()) . 'Driver';
+		//get db information
+		$db_info = $db_config->getLogins();
 
-		//create the database driver
-		$driver = new $driverName();
+		// initialize instance
+		$db = Database::getInstance();
 
-		//create a connection to the database driver
-		$this->_db = $driver->connect($link);
+		// set database information
+		$db->set( 	$db_info['host'], 
+					$db_info['username'], 
+					$db_info['password'], 
+					$db_info['dbname'], 
+					$db_info['driver'], 
+					$db_info['charset']
+				);
+
+		// execute database connnection
+		$this->_db = $db->connect();
+
 	}
 	
 	/*
@@ -33,7 +43,7 @@ class BaseModel{
 		return $results;
 	}
 
-	protected function queryFrom($table, $sql){
+	protected function queryFrom($sql){
 		$sth = $this->_db->prepare($sql);
 		$sth->execute();
 		$results = $sth->fetchAll();
