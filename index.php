@@ -56,19 +56,19 @@ if(SERVER_ENV == 'development'){
 
 /* CONFIGURE DATABASE LOGINS
  * Enable to confire database 
- *
+ */
+
 require_once(CONFIG_PATH.DS.'Database.config'.EXT);
 $db_config = DatabaseConfig::getInstance();
-$db_info = array(
-		'host' 		=> '',
-		'username'	=> '',
+$db_config->setLogins([
+		'host' 		=> '127.0.0.1',
+		'username'	=> 'root',
 		'password'	=> '',
-		'dbname'	=> '',
-		'driver'	=> '',
+		'dbname'	=> 'jhanxtreme',
+		'driver'	=> 'mysql',
 		'charset'	=> 'utf8'
-	);
-$db_config->setLogins($db_info);
-*/
+	]);
+
 
 
 //
