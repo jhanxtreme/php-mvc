@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/#">JhanMateo Project</a>
+          <a class="navbar-brand" href="./#">JhanMateo Project</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -53,7 +53,7 @@
 		<?php endif; ?>
 		
 		<?php if(isset($content)): ?>
-			<p class='lead'><?php echo $content; ?></p>
+			<p class=''><?php echo $content; ?></p>
 		<?php endif; ?>
 		
 	</div><!-- /.container -->

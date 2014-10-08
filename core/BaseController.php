@@ -20,8 +20,8 @@ class BaseController{
 	//load specific libraries
 	protected function loadLibrary($name){
 		$name = ucwords($name);
-		if( isset($name) && file_exists(LIBRARY_PATH.DS.ucfirst($name).'.php') ){
-			require_once(LIBRARY_PATH.DS.ucfirst($name).'.php');
+		if( isset($name) && file_exists(LIBRARY_PATH.DS.ucfirst($name).EXT) ){
+			require_once(LIBRARY_PATH.DS.ucfirst($name).EXT);
 			$this->$name = $name::getInstance();
 			return $this->$name;
 		}

@@ -8,8 +8,8 @@ class HomeController extends BaseController{
 		$menus = $this->loadLibrary('RegisterPages');
 	
 		$data = array(
-			'title'		=> 'Home',
-			'content'	=> 'Welcome to the homepage.',
+			'title'		=> 'Welcome',
+			'content'	=> 'This is the Jhan Mateo simple PHP Framework - BETA',
 			'menu' 		=> $menus->getMenuLinks()
 		);
 		View::renderHTML('home/home', $data);

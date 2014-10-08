@@ -24,28 +24,28 @@ class Bootstrap{
 		spl_autoload_register(function($class){
 
 			//load core files and database drivers
-			if(file_exists(CORE.DS.ucfirst($class).'.php')){
-				require_once(CORE.DS.ucfirst($class).'.php');
+			if(file_exists(CORE.DS.ucfirst($class).EXT)){
+				require_once(CORE.DS.ucfirst($class).EXT);
 			}
-			if(file_exists(CORE.DS.'database'.DS.ucfirst($class).'.php')){
-				require_once(CORE.DS.'database'.DS.ucfirst($class).'.php');
+			if(file_exists(CORE.DS.'database'.DS.ucfirst($class).EXT)){
+				require_once(CORE.DS.'database'.DS.ucfirst($class).EXT);
 			}
-			if(file_exists(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).'.php')){
-				require_once(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).'.php');
+			if(file_exists(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).EXT)){
+				require_once(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).EXT);
 			}
-			if(file_exists(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).'.php')){
-				require_once(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).'.php');
+			if(file_exists(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).EXT)){
+				require_once(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).EXT);
 			}
 
 			// load models, views, controllers
-			if(file_exists(APP_PATH.DS.'application'.DS.'models'.DS.$class.'.php')){
-				require_once(APP_PATH.DS.'application'.DS.'models'.DS.$class.'.php');
+			if(file_exists(APP_PATH.DS.'application'.DS.'models'.DS.$class.EXT)){
+				require_once(APP_PATH.DS.'application'.DS.'models'.DS.$class.EXT);
 			}
-			if(file_exists(APP_PATH.DS.'application'.DS.'views'.DS.$class.'.php')){
-				require_once(APP_PATH.DS.'application'.DS.'views'.DS.$class.'.php');
+			if(file_exists(APP_PATH.DS.'application'.DS.'views'.DS.$class.EXT)){
+				require_once(APP_PATH.DS.'application'.DS.'views'.DS.$class.EXT);
 			}
-			if(file_exists(APP_PATH.DS.'application'.DS.'controllers'.DS.$class.'.php')){
-				require_once(APP_PATH.DS.'application'.DS.'controllers'.DS.$class.'.php');
+			if(file_exists(APP_PATH.DS.'application'.DS.'controllers'.DS.$class.EXT)){
+				require_once(APP_PATH.DS.'application'.DS.'controllers'.DS.$class.EXT);
 			}
 			
 		});

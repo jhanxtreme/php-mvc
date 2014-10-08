@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+
+	# mod_negotiation
+	# mod_negotiation is an Apache module responsible for selecting the document that best matches 
+	# the clients capabilities, from one of several available documents. If the client provides an invalid 
+	# Accept header, the server will respond with a 406 Not Acceptable error containing a pseudo directory listing. 
+	# This behaviour can help an attacker to learn more about his target, for example, generate a list of base names, 
+	# generate a list of interesting extensions, look for backup files and so on.
+
+	# Possible information disclosure: directory listing, filename bruteforcing, backup files.
+
+	<IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine on
+
+	# Redirect Trailing Slashes...
+	RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+
+	RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
