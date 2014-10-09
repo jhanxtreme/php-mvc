@@ -1,3 +1,5 @@
+<?php if(! defined('BASE_PATH')) die('Direct access not allowed. Contact jhanxtreme@gmail.com.'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,4 +1,4 @@
-<?php
+<?php if(! defined('BASE_PATH')) die('Direct access not allowed. Contact jhanxtreme@gmail.com.');
 
 class Bootstrap{
 	
@@ -22,7 +22,7 @@ class Bootstrap{
 	
 		//load class dependecies
 		spl_autoload_register(function($class){
-
+			
 			//load core files and database drivers
 			if(file_exists(CORE.DS.ucfirst($class).EXT)){
 				require_once(CORE.DS.ucfirst($class).EXT);
@@ -49,7 +49,7 @@ class Bootstrap{
 			}
 			
 		});
-
+	
 		//execeute routing
 		self::dispatch();
 	}

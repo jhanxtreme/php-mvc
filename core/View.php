@@ -1,4 +1,4 @@
-<?php
+<?php if(! defined('BASE_PATH')) die('Direct access not allowed. Contact jhanxtreme@gmail.com.');
 
 interface iView{
 	public static function renderHTML($name, $data);

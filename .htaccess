@@ -1,5 +1,14 @@
 <IfModule mod_rewrite.c>
 
+	<FilesMatch "\.php$">
+    Order Allow,Deny
+    Deny from all
+	</FilesMatch>
+	<FilesMatch "index[a-zA-Z0-9]?\.php$">
+	    Order Allow,Deny
+	    Allow from all
+	</FilesMatch>
+
 	# mod_negotiation
 	# mod_negotiation is an Apache module responsible for selecting the document that best matches 
 	# the clients capabilities, from one of several available documents. If the client provides an invalid 
