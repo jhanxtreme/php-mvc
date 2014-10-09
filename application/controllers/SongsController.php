@@ -18,4 +18,9 @@ class SongsController extends BaseController{
 		);
 		View::renderHTML('songs/songs', $data);
 	}
+
+	public function get(){
+		header('Content-type: application/json');
+		echo json_encode($this->Songs->getSongs());
+	}
 }
