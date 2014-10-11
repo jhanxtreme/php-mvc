@@ -13,7 +13,7 @@ Usage
 <?php
 
  
-class Song extends BaseControllers{
+class SongController extends BaseController{
 
 
 	public function index(){
