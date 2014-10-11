@@ -8,8 +8,6 @@ class Bootstrap{
 	
 	private static $_instance;
 
-	function __construct(){}
-	
 	public static function getInstance(){
 		if(!self::$_instance){
 			$class = __CLASS__;
