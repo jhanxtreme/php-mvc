@@ -7,22 +7,7 @@ class BaseModel{
 	function __construct(){
 
 		//set an database instance
-		$db_config = DatabaseConfig::getInstance();
-
-		//get db information
-		$db_info = $db_config->getLogins();
-
-		// initialize instance
 		$db = Database::getInstance();
-
-		// set database information
-		$db->set( 	$db_info['host'], 
-					$db_info['username'], 
-					$db_info['password'], 
-					$db_info['dbname'], 
-					$db_info['driver'], 
-					$db_info['charset']
-				);
 
 		// execute database connnection
 		$this->_db = $db->connect();

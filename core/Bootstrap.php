@@ -22,19 +22,13 @@ class Bootstrap{
 	
 		//load class dependecies
 		spl_autoload_register(function($class){
-			
-			//load core files and database drivers
+		
+			//load core files
 			if(file_exists(CORE.DS.ucfirst($class).EXT)){
 				require_once(CORE.DS.ucfirst($class).EXT);
 			}
-			if(file_exists(CORE.DS.'database'.DS.ucfirst($class).EXT)){
-				require_once(CORE.DS.'database'.DS.ucfirst($class).EXT);
-			}
-			if(file_exists(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).EXT)){
-				require_once(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).EXT);
-			}
-			if(file_exists(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).EXT)){
-				require_once(CORE.DS.'database'.DS.'drivers'.DS.ucfirst($class).EXT);
+			if(file_exists(CONFIG_PATH.DS.ucfirst($class).EXT)){
+				require_once(CONFIG_PATH.DS.ucfirst($class).EXT);
 			}
 
 			// load models, views, controllers
@@ -52,6 +46,27 @@ class Bootstrap{
 	
 		//execeute routing
 		self::dispatch();
+	}
+	
+	public function setDatabaseConfig($data){
+		require_once(CONFIG_PATH.DS.'Database'.EXT);
+		$db_config = Database::getInstance();
+		$db_config->set($data);
+	}
+	
+	public function setErrorReporting(){
+		if(SERVER_ENV == 'development'){
+			error_reporting(E_ALL);
+			ini_set('display_errors', 'On');
+			ini_set('log_errors', 'On');
+			ini_set('error_log', APP_PATH.DS.'temp'.DS.'error_logs'.DS.'error.log');
+		}else{
+			error_reporting(E_ALL);
+			ini_set('display_errors','Off');
+			ini_set('log_errors', 'On');
+			ini_set('error_log', APP_PATH.DS.'temp'.DS.'error_logs'.DS.'error.log');
+		}
+
 	}
 	
 	private function dispatch(){

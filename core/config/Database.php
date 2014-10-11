@@ -10,7 +10,7 @@ class Database {
 	private $charset;
 
 	private static $_instance;
-
+	
 	public static function getInstance(){
 		if(!self::$_instance){
 			$class = __CLASS__;
@@ -19,13 +19,13 @@ class Database {
 		return self::$_instance;
 	}
 
-	public function set($h, $u, $p, $db, $dr, $ch){
-		$this->_host = $h;
-		$this->_username = $u;
-		$this->_password = $p;
-		$this->_dbname = $db;
-		$this->_driver = $dr;
-		$this->_charset = $ch;
+	public function set($data){
+		$this->_host = $data['host'];
+		$this->_username = $data['username'];
+		$this->_password = $data['password'];
+		$this->_dbname = $data['dbname'];
+		$this->_driver = $data['driver'];
+		$this->_charset = $data['charset'];
 	}
 	
 	public function connect(){
@@ -33,8 +33,7 @@ class Database {
 			$link = new PDO("{$this->_driver}:host={$this->_host};dbname={$this->_dbname};charset={$this->_charset}", $this->_username, $this->_password);
 			return $link;
 		}catch(PDOException $e){
-			die('Unable to connect to the database.');
-			//die($e->getMessage());
+			die(nl2br("Unable to connect to the database. \n" .  $e->getMessage()));
 		}
 	}
 	
