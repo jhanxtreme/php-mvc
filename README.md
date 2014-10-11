@@ -1,4 +1,24 @@
 php-mvc
 =======
 
-This my PHP Beta FrameWork. 
+Jhanxtreme's simple PHP Framework
+
+Usage
+=====
+
+
+class Song extends BaseControllers{
+	public function index(){
+
+		//loading a Model
+		$this->loadModel('Songs');
+
+		//get Model data
+		$data = $this->Songs->getSongs();
+
+		// Show HTML format
+		View::renderHTML('songs/songs', $data);
+	}
+}
+
+
