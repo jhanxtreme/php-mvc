@@ -30,8 +30,10 @@ class Database {
 	
 	public function connect(){
 		try{
-			$link = new PDO("{$this->_driver}:host={$this->_host};dbname={$this->_dbname};charset={$this->_charset}", $this->_username, $this->_password);
-			return $link;
+			$pdo = new PDO("{$this->_driver}:host={$this->_host};dbname={$this->_dbname};charset={$this->_charset}", $this->_username, $this->_password);
+			$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			return $pdo;
 		}catch(PDOException $e){
 			die(nl2br("Unable to connect to the database. \n" .  $e->getMessage()));
 		}
