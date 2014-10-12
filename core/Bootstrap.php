@@ -82,7 +82,7 @@ class Bootstrap{
 
 				// set new controller
 				$dispatch = new $routes['controller']($routes['model']);
-
+				
 				//execute controller and method
 				if(method_exists($dispatch, $routes['action'])){
 					call_user_func_array(array($dispatch, $routes['action']), $routes['parameters']);
@@ -108,6 +108,8 @@ class Bootstrap{
 		if(isset($_GET['url'])){
 			$uriArray = explode('/', $_GET['url']);
 		}
+		
+
 
 		if(!count($uriArray)){
 			$controller = self::DEFAULT_CONTROLLER;
@@ -116,11 +118,17 @@ class Bootstrap{
 			$parameters = array();
 		}else{
 			$controller = ucfirst($uriArray[0]).'Controller';
-			$action = (isset($uriArray[1])) ? $uriArray[1] : 'index';
+			$action = (isset($uriArray[1]) && !empty($uriArray[1])) ? $uriArray[1] : 'index';
 			$model = ucfirst($uriArray[0]);
 			$parameters = array();
+			if(count($uriArray) > 1){
+				for($i=2; $i < count($uriArray); $i++){
+					$parameters[] = $uriArray[$i];
+				}
+			}
+			
 		}
-		
+			
 		return [
 			'controller'=>$controller, 
 			'action'	=>$action, 
