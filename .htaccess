@@ -1,28 +1,20 @@
 <IfModule mod_rewrite.c>
+      RewriteEngine On
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+      
+      <FilesMatch "\.php$">
+		Order Allow,Deny
+		Deny from all
+		</FilesMatch>
+		<FilesMatch "index[a-zA-Z0-9]?\.php$">
+			Order Allow,Deny
+			Allow from all
+		</FilesMatch>
 
-
-    RewriteEngine on
-
-	# Redirect Trailing Slashes...
-	RewriteRule ^(.*)/$ /$1 [L,R=301]
-
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-
-	RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
-	
-	
-	<FilesMatch "\.php$">
-    Order Allow,Deny
-    Deny from all
-	</FilesMatch>
-	<FilesMatch "index[a-zA-Z0-9]?\.php$">
-	    Order Allow,Deny
-	    Allow from all
-	</FilesMatch>
-
-	<IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
-	
+		<IfModule mod_negotiation.c>
+			Options -MultiViews
+		</IfModule>
 </IfModule>
+	
