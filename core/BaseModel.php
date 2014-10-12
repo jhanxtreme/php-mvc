@@ -1,8 +1,8 @@
 <?php if(! defined('BASE_PATH')) die('Direct access not allowed. Contact jhanxtreme@gmail.com.');
 
-class BaseModel{
+abstract class BaseModel{
 
-	private $_db;
+	protected $_db;
 
 	function __construct(){
 
@@ -14,12 +14,6 @@ class BaseModel{
 
 	}
 	
-	/*
-	public static function __callStatic($name, $arguments){
-		$methods = array('query');
-		$this->$name($arguments);
-	}*/
-	
 	protected function queryAll($table){
 		$sql = "SELECT * FROM {$table}";
 		$sth = $this->_db->prepare($sql);
@@ -28,13 +22,6 @@ class BaseModel{
 		return $results;
 	}
 
-	protected function queryFrom($sql){
-		$sth = $this->_db->prepare($sql);
-		$sth->execute();
-		$results = $sth->fetchAll();
-		return $results;
-	}
-	
 	//close db connection
 	public function __destruct(){
 		//echo "connection lost.";
