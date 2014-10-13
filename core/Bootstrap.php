@@ -28,6 +28,11 @@ class Bootstrap{
 			if(file_exists(CONFIG_PATH.DS.ucfirst($class).EXT)){
 				require_once(CONFIG_PATH.DS.ucfirst($class).EXT);
 			}
+			
+			//load library class
+			if(file_exists(LIBRARY_PATH.DS.ucfirst($class).EXT)){
+				require_once(LIBRARY_PATH.DS.ucfirst($class).EXT);
+			}
 
 			// load models, views, controllers
 			if(file_exists(APP_PATH.DS.'application'.DS.'models'.DS.$class.EXT)){
@@ -39,7 +44,7 @@ class Bootstrap{
 			if(file_exists(APP_PATH.DS.'application'.DS.'controllers'.DS.$class.EXT)){
 				require_once(APP_PATH.DS.'application'.DS.'controllers'.DS.$class.EXT);
 			}
-			
+
 		});
 	
 		//execeute routing
@@ -108,9 +113,7 @@ class Bootstrap{
 		if(isset($_GET['url'])){
 			$uriArray = explode('/', $_GET['url']);
 		}
-		
-
-
+	
 		if(!count($uriArray)){
 			$controller = self::DEFAULT_CONTROLLER;
 			$action = self::DEFAULT_ACTION;
