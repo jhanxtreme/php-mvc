@@ -1,19 +1,16 @@
 <?php if(! defined('BASE_PATH')) die('Direct access not allowed. Contact jhanxtreme@gmail.com.');
 
-class BaseController{
+abstract class BaseController{
 
-	protected $_model;
-
-	function __construct($model){
-		// $this->Employee::getAll()
-		$this->loadModel($model);
-	}
-	
 	//load model into the controller
-	protected function loadModel($name){
-		if(isset($name) && class_exists($name)){
-			$this->$name = new $name();
-			return $this->$name;
+	public function __call($method, $args){
+		if($method == "loadModel"){
+			for($i=0; $i<count($args); $i++){
+				if(class_exists($args[$i])){
+					$this->$args[$i] = new $args[$i]();
+					$this->_models[$args[$i]] = $this->$args[$i];
+				}
+			}
 		}
 	}
 
