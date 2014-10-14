@@ -13,18 +13,25 @@ Usage
 <?php
 
  
-class SongController extends BaseController{
+class HomeController extends BaseController{
 
+	function __construct(){
+		//load songs
+		$this->loadModel('Songs');
+		//load gallery
+		$this->loadLibrary('Gallery');
+	}
 
 	public function index(){
-		//loading a Model
-		$this->loadModel('Songs');
 
 		//get Model data
-		$data = $this->Songs->getSongs();
+		$data = [
+			songs 	=> $this->Songs->getSongs(),
+			gallery	=> $this->Gallery->getImages();
+		];
 
 		// Show HTML format
-		View::renderHTML('songs/songs', $data);
+		View::renderHTML('default/default', $data);
 	}
 
 }
