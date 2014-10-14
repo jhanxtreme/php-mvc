@@ -6,8 +6,8 @@ class Database {
 	private $_username;
 	private $_password;
 	private $_dbname;
-	private $driver;
-	private $charset;
+	private $_driver;
+	private $_charset;
 
 	private static $_instance;
 	
@@ -30,12 +30,12 @@ class Database {
 	
 	public function connect(){
 		try{
-			$pdo = new PDO("{$this->_driver}:host={$this->_host};dbname={$this->_dbname};charset={$this->_charset}", $this->_username, $this->_password);
+			$pdo = new PDO("{$this->_driver}:host={$this->_host}; dbname={$this->_dbname}; 	charset={$this->_charset}", $this->_username, $this->_password);
 			$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			return $pdo;
 		}catch(PDOException $e){
-			die(nl2br("Unable to connect to the database. \n" .  $e->getMessage()));
+			die(nl2br("Unable to connect to the database. \n" .  ucfirst($e->getMessage())));
 		}
 	}
 	
